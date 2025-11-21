@@ -89,6 +89,18 @@ $ cd processo_seletivo
 3 - Instale as depêndencias
 
 ```bash
+$ sudo add-apt-repository ppa:ondrej/php
+```
+
+```bash
+$ sudo apt install php5.6 -y
+```
+
+```bash
+$ curl -sS https://getcomposer.org/installer | php
+```
+
+```bash
 $ composer install
 ```
 
