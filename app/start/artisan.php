@@ -11,3 +11,5 @@
 |
 */
 
+Artisan::add(new cadastrarUsuario);
+Artisan::add(new relatorioFinanceiro);
