@@ -13,5 +13,9 @@ class CalculoTableSeeder extends Seeder {
         Calculo::create(array(
             'nome' => 'SOMA'
         ));
+
+        Calculo::create(array(
+            'nome' => 'MEDIA PONDERADA'
+        ));
     }
 }
