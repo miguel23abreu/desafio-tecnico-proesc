@@ -59,8 +59,9 @@ class BoletimController extends BaseController {
             ->get();
 
         $notas_formatar = new NotasFormatar();
-        $notas_formatar->formataNotasPeriodos($notas_periodos, $criterio_avaliativo);
-        $notas_finais = $notas_formatar->calculaNotaFinal($notas_periodos, $disciplinas, $criterio_avaliativo);
+        $nota_final_formatada = new NotasFormatar();
+        // $notas_formatar->formataNotasPeriodos($notas_periodos, $criterio_avaliativo);
+        $notas_finais = $nota_final_formatada->calculaNotaFinal($notas_periodos, $disciplinas, $criterio_avaliativo);
 
         return View::make('relatorios.boletim')->with([
             'notas_periodos' => $notas_periodos,
