@@ -13,5 +13,9 @@ class ArredondamentoTableSeeder extends Seeder {
         Arredondamento::create(array(
             'nome' => 'FRAÇÕES SÃO ARREDONDADAS PARA BAIXO'
         ));
+
+        Arredondamento::create(array(
+            'nome' => 'NOTAS MAIOR OU IGUAL A 7 DEVEM SER ARREDONDADA PARA O PROXIMO INTEIRO'
+        ));
     }
 }
