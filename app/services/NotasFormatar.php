@@ -47,13 +47,40 @@ Class NotasFormatar {
                     'contagem' => 0
                 ];
             }
-    
             $array_notas_finais[$disciplina_id]['soma'] += $nota['valor_nota'];
             $array_notas_finais[$disciplina_id]['contagem']++;
         }
     
         foreach ($array_notas_finais as &$nota_final) {
             $nota_final['valor_nota'] = $this->arredondaNota($nota_final['soma'] / $nota_final['contagem'], $arredondamento_id);
+        }
+    
+        return $array_notas_finais;
+    }
+
+    function calculo3($array_notas, $arredondamento_id) {
+        $array_notas_finais = [];
+    
+        foreach ($array_notas as $nota) {
+            $disciplina_id = $nota['disciplina_id'];
+    
+            if (!isset($array_notas_finais[$disciplina_id])) {
+                $array_notas_finais[$disciplina_id] = [
+                    'disciplina_id' => $disciplina_id,
+                    'soma' => 0,
+                    'contagem' => 0
+                ];
+            }
+            if($array_notas_finais[$disciplina_id]['contagem'] >= 2){
+                $array_notas_finais[$disciplina_id]['soma'] += $nota['valor_nota']*2;
+            } else{
+                $array_notas_finais[$disciplina_id]['soma'] += $nota['valor_nota'];
+            }
+            $array_notas_finais[$disciplina_id]['contagem']++;
+        }
+    
+        foreach ($array_notas_finais as &$nota_final) {
+            $nota_final['valor_nota'] = $this->arredondaNota(($nota_final['soma'] / 6), $arredondamento_id);
         }
     
         return $array_notas_finais;
@@ -103,5 +130,22 @@ Class NotasFormatar {
         $valor_nota_arredondada = floor($valor_nota);
         
         return $valor_nota_arredondada;
+    }
+
+    protected function arredondamento3($valor_nota)
+    {
+        $valor_decimal = explode(".", $valor_nota);
+
+        if(!isset($valor_decimal[1])){
+            return $valor_nota;
+        }
+        
+        if(intval($valor_decimal[1]) >= 7){
+            $valor_nota_arredondada = ceil($valor_nota);
+            return $valor_nota_arredondada;
+        }
+        else{
+            return $valor_nota;
+        }
     }
 }
