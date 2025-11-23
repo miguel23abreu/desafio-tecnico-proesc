@@ -14,8 +14,8 @@ class CriterioAvaliativoTableSeeder extends Seeder {
 
         CriterioAvaliativo::create(array(
             'nome' => 'ENSINO FUNDAMENTAL II',
-            'arredondamento_id' => 1,
-            'calculo_id' => 1
+            'arredondamento_id' => 3,
+            'calculo_id' => 3
         ));
 
         CriterioAvaliativo::create(array(
