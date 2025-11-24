@@ -73,7 +73,7 @@ Estou entrando em contato para solicitar uma série de ajustes e tarefas técnic
 
 Cada uma dessas solicitações é crucial para a operação contínua e a eficiência de nossos processos internos. Agradeço antecipadamente a atenção e a rapidez na resolução desses itens. Por favor, mantenham-me informado sobre o progresso de cada tarefa.
 
-### Como executar 
+### Como executar
 
 Para iniciá-lo, siga os passos abaixo:
 
@@ -86,7 +86,9 @@ $ git clone https://github.com/v-gama/processo_seletivo.git
 ```bash
 $ cd processo_seletivo
 ```
-3 - Instale as depêndencias
+3 - Instale as depêndencias. 
+
+3.1 - (Sistemas debian como o próprio debian, ubuntu, zorin os e etc)
 
 ```bash
 $ sudo add-apt-repository ppa:ondrej/php
@@ -102,6 +104,24 @@ $ curl -sS https://getcomposer.org/installer | php
 
 ```bash
 $ composer install
+```
+
+3.2 - (sistemas red hat como fedora)
+
+##### Obs: o php 5.6 não compatibilidade com o fedora 42, então foi necessário utilizar fazer o uso de uma imagem docker para usar compilar e rodar o projeto.
+
+Para construir a imagem rode:
+```bash
+$ docker build -t processo_seletivo_docker . 
+```
+Para rodar a imagem e entrar no terminal do container:
+```bash
+$ docker run -it -p 8000:8000 processo_seletivo_docker bash 
+```
+
+#### Obs: Caso já tenha roda as migrations e o seeders, você poder executar o somente o comando run.sh, que vai construir a imegem, rodá-la e executar o comando php artisan serve .
+```bash
+$ run.sh 
 ```
 
 4 - Crie o arquivo arquivo .env.local.php copiando o arquivo [.env.local.example.php](.env.local.example.php) e configure com as informações do seu banco local
